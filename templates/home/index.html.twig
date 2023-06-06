@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1 class="mt-5">Welcome, {{ user.name }}!</h1>
+    <div class="mt-4">
+        <a href="{{ path('run_tests') }}" class="btn btn-primary">Run Tests</a>
+    </div>
+</div>
+{% endblock %}
+
+
