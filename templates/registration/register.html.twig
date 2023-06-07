@@ -10,6 +10,19 @@
 
             {{ form_start(registrationForm) }}
 
+            {% set formErrors = [] %}
+            {% for field in registrationForm %}
+                {% for error in field.vars.errors %}
+                    {% set formErrors = formErrors|merge([error.message]) %}
+                {% endfor %}
+            {% endfor %}
+            
+            {% if formErrors %}
+                <div class="alert alert-danger">
+                    {{ formErrors|join('<br>')|raw }}
+                </div>
+            {% endif %}
+
             <div class="form-group">
                 {{ form_label(registrationForm.name) }}
                 {{ form_widget(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
@@ -32,4 +45,3 @@
     </div>
 </div>
 {% endblock %}
-
